@@ -8,7 +8,31 @@ function SecondGridSeat(){
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+
+                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+
+                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
 
@@ -25,31 +49,7 @@ function SecondGridSeat(){
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
 
                                     <button className="btn-seat"></button>

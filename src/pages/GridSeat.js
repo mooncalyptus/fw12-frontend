@@ -10,13 +10,13 @@ function GridSeat(){
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
+                                    <button className="@apply w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
 
                                     <button> B</button>
                                     <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
@@ -26,14 +26,14 @@ function GridSeat(){
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#8EC3B0]"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#8EC3B0]"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#8EC3B0]"></button>
                                     <button className="btn-seat"></button>
 
                                     <button>D</button>
                                     <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
@@ -44,7 +44,7 @@ function GridSeat(){
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
@@ -61,7 +61,7 @@ function GridSeat(){
                                     <button>G</button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
+                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
                                     <button className="btn-seat"></button>
