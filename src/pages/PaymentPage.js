@@ -21,9 +21,9 @@ function PaymentPage(){
             </div>
 
             <div className="bg-[#E5E5E5]">
-                <div className="grid grid-cols-2">
+                <div className="grid grid-cols-2 pl-[70px]">
                     <div>
-                        <div className="text-2xl font-bold">Payment Info</div>
+                        <div className="text-2xl font-bold pt-14">Payment Info</div>
                         <div className="bg-white px-10 py-12 mt-6">
                             <div className="flex">
                                 <div className="grow text-[#6B6B6B]">Date & time</div>
@@ -52,8 +52,8 @@ function PaymentPage(){
                         </div>
 
                         <div>
-                            <div className="text-2xl font-bold">Choose a Payment Method</div>
-                            <div className="bg-white">
+                            <div className="text-2xl font-bold pt-12">Choose a Payment Method</div>
+                            <div className="bg-white mt-6">
                                 <div className="grid grid-cols-4 px-12 pt-14 gap-4">
                                 <div className="border-2 border-[#DEDEDE] flex justify-center">
                                    <img src={require('../assets/images/gpay.png')} className="h-6 mt-2" alt="desc"/>
@@ -91,13 +91,20 @@ function PaymentPage(){
                         </div>
                         </div>    
 
-                        <div>
+                        <div className="ml-6 mr-6 mt-14">
                             <div className="text-2xl font-bold">Personal Info</div>
-                            <div className="bg-white">
-                                <div>Full Name</div>
-                                <input type="text" name="fullName"></input>
-                                <div>Email</div>
-                                <input type="email" name="email"></input>
+                            <div className="bg-white px-10 mt-6">
+                                <div className="pt-[47px]">Full Name</div>
+                                <input type="text" className="rounded mt-3.5" name="fullName"></input>
+                                <div className="mt-8">Email</div>
+                                <input type="email" className="rounded mt-3.5" name="email"></input>
+                                <div className="mt-8">Phone Number</div>
+                                <div class="flex mt-3.5 pb-8">
+  <span className="inline-flex items-center px-3 text-sm text-gray-900 border border-r-0 border-gray-300 rounded dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+    +62
+  </span>
+  <input type="text" id="website-admin" class="rounded rounded border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></input>
+</div>
                             </div>
                         </div>                
                 </div>
