@@ -10,6 +10,7 @@ import PaymentPage from "./pages/PaymentPage";
 import ProfilePage from "./pages/ProfilePage";
 import OrderHistory from "./pages/OrderHistory";
 import TicketResult from "./pages/TicketResult";
+import TicketUsed from "./pages/TicketUsed";
 
 const App = ()=> {
   return(
@@ -25,6 +26,7 @@ const App = ()=> {
       <Route path="/profilepage" element={<ProfilePage/>} />
       <Route path="/orderhistory" element={<OrderHistory/>} />
       <Route path="/ticketresult" element={<TicketResult/>} />
+      <Route path="/ticketused" element={<TicketUsed/>} />
     </Routes>
     </BrowserRouter>
   )
