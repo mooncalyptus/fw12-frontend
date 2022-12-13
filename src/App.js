@@ -11,6 +11,7 @@ import ProfilePage from "./pages/ProfilePage";
 import OrderHistory from "./pages/OrderHistory";
 import TicketResult from "./pages/TicketResult";
 import TicketUsed from "./pages/TicketUsed";
+import TicketExpired from "./pages/TicketExpired";
 
 const App = ()=> {
   return(
@@ -27,6 +28,7 @@ const App = ()=> {
       <Route path="/orderhistory" element={<OrderHistory/>} />
       <Route path="/ticketresult" element={<TicketResult/>} />
       <Route path="/ticketused" element={<TicketUsed/>} />
+      <Route path="/ticketexpired" element={<TicketExpired/>} />
     </Routes>
     </BrowserRouter>
   )

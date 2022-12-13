@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
-function TicketResult() {
+function TicketExpired() {
     return (
         <div className="font-mulish">
             <Navbar></Navbar>
@@ -17,7 +17,7 @@ function TicketResult() {
                                     <div className="pl-14">
                                         <img src={require('../assets/images/removed.png')} className="w-32" alt="desc" />
                                     </div>
-                                    <div className="pt-[18px] text-lg">Admit One</div>
+                                    <div className="pt-[18px] text-lg font-semibold">Admit One</div>
                                 </div>
                                 <div className="ml-14">
                                     <div className="text-xs text-[#AAAAAA] mt-8">Movie</div>
@@ -60,7 +60,9 @@ function TicketResult() {
                                 <img src={require('../assets/images/removed.png')} className="w-32" alt="desc" />
                                 </div>
                                 <div className="flex justify-center pl-[68px] mt-12 pr-8">
-                                <img src={require('../assets/images/qr.png')} className="w-32" alt="desc"/>
+                                <div className="bg-[#F5F6F8] pl-10 pr-[50px] pt-[65px] pb-[50px] mb-[47px]">
+                                    <div className="text-center text-base font-bold my-8">Ticket Expired</div>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -72,4 +74,4 @@ function TicketResult() {
     )
 }
 
-export default TicketResult;
+export default TicketExpired;
