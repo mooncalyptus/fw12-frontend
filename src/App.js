@@ -9,6 +9,7 @@ import OrderPage from "./pages/OrderPage";
 import PaymentPage from "./pages/PaymentPage";
 import ProfilePage from "./pages/ProfilePage";
 import OrderHistory from "./pages/OrderHistory";
+import TicketResult from "./pages/TicketResult";
 
 const App = ()=> {
   return(
@@ -23,6 +24,7 @@ const App = ()=> {
       <Route path="/paymentpage" element={<PaymentPage/>} />
       <Route path="/profilepage" element={<ProfilePage/>} />
       <Route path="/orderhistory" element={<OrderHistory/>} />
+      <Route path="/ticketresult" element={<TicketResult/>} />
     </Routes>
     </BrowserRouter>
   )

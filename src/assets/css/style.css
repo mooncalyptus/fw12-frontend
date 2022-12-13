@@ -15,3 +15,9 @@
 .btn-another-seat{
     @apply bg-white w-[26px] h-[26px]
 }
+.ticket-title{
+    @apply text-xs text-[#AAAAAA];
+}
+.ticket-value{
+    @apply text-2xl font-bold;
+}
