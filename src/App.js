@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import OrderPage from "./pages/OrderPage";
 import PaymentPage from "./pages/PaymentPage";
 import ProfilePage from "./pages/ProfilePage";
+import OrderHistory from "./pages/OrderHistory";
 
 const App = ()=> {
   return(
@@ -21,6 +22,7 @@ const App = ()=> {
       <Route path="/orderpage" element={<OrderPage/>} />
       <Route path="/paymentpage" element={<PaymentPage/>} />
       <Route path="/profilepage" element={<ProfilePage/>} />
+      <Route path="/orderhistory" element={<OrderHistory/>} />
     </Routes>
     </BrowserRouter>
   )

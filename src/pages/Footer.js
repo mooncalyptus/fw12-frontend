@@ -1,6 +1,8 @@
 import React from "react";
 
 function Footer(){
+    return(
+        <div>
     <div className="flex flex-col ml-32">
     <div className="grid grid-cols-4">
         <div>
@@ -47,6 +49,8 @@ function Footer(){
     </div>
     </div>
 </div>
+</div>
+    )
 }
 
-export default Footer
+export default Footer;
