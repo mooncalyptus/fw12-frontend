@@ -12,6 +12,9 @@ import OrderHistory from "./pages/OrderHistory";
 import TicketResult from "./pages/TicketResult";
 import TicketUsed from "./pages/TicketUsed";
 import TicketExpired from "./pages/TicketExpired";
+import ManageMovie from "./pages/ManageMovie";
+import Dashboard from "./pages/Dashboard";
+import ManageSchedule from "./pages/ManageSchedule";
 
 const App = ()=> {
   return(
@@ -29,6 +32,9 @@ const App = ()=> {
       <Route path="/ticketresult" element={<TicketResult/>} />
       <Route path="/ticketused" element={<TicketUsed/>} />
       <Route path="/ticketexpired" element={<TicketExpired/>} />
+      <Route path="/managemovie" element={<ManageMovie/>} />
+      <Route path="/dashboard" element={<Dashboard/>} />
+      <Route path="/manageschedule" element={<ManageSchedule/>} />
     </Routes>
     </BrowserRouter>
   )
