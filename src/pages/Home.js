@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 
 
@@ -22,15 +23,22 @@ function ShowingGrid({data}){
     )
 }
 function UpcomingGrid({data}){
+    const [isShown, setisShown] = useState(false)
     return(
         <div className="grid justify-items-center">
-                 <img src={"http://localhost:8888/uploads/".concat(data.picture)} className="w-40 h-60 rounded" alt={data.title}></img>
-                 <div>{data.title}</div>
-                 <Link to="/viewall"> <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button></Link>
+            <img src={"http://localhost:8888/uploads/".concat(data.picture)} className="w-40 h-60 rounded" alt={data.title}
+            onMouseEnter={()=> setisShown(true)}
+            onMouseLeave={()=> setisShown(false)}/>
+                {isShown && (
+                <div className="grid justify-items-center">
+                <div className="grid justify-items-center">{data.title}</div>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button>
+                </div>
+                 )}
         </div>
     )
 }
-function Homepage(){
+function Home(){
     const [nowShowing, setNowShowing] = React.useState([])
     const [upcomingMovies, setUpcomingMovies] = React.useState([])
     React.useEffect(()=> {
@@ -53,19 +61,7 @@ function Homepage(){
         return(
             <>
             <div className="font-mulish">
-                <div className="bg-white flex">
-                <div className="flex items-center grow mx-32">
-                <img src={require('../assets/images/logo.png')} className="w-32" alt="desc"/>
-                <div className="mx-20">Home</div>
-                <Link to="/viewall"><div className="mx-3">List Movie</div></Link>
-                </div>
-                <div className="mr-32">
-                <>
-                <Link to="/signin"><button type="button" className="text-black bg-[#9ED5C5] hover:bg-blue-800 hover:text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-4 w-30">Sign In</button> </Link>
-                </>
-                </div>
-                </div>
-    
+                <Navbar></Navbar>
                 <div className="grid grid-cols-2 my-12">
                     <div className="grid content-center justify-center">
                         <div className="text-[#A0A3BD] text-2xl">Nearest Cinema, Newest Movie, </div>
@@ -97,18 +93,18 @@ function Homepage(){
                 <Link to="/viewall"><div className="text-[#9ED5C5] font-bold">View All</div></Link> 
                 </div>
                 <div className="ml-24 overflow-x-auto">
-                <button type="button" class="btn-month">January</button>
-                <button type="button" class="btn-month">February</button>
-                <button type="button" class="btn-month">March</button>
-                <button type="button" class="btn-month">April</button>
-                <button type="button" class="btn-month">May</button>
-                <button type="button" class="btn-month">June</button>
-                <button type="button" class="btn-month">July</button>
-                <button type="button" class="btn-month">August</button>
-                <button type="button" class="btn-month">September</button>
-                <button type="button" class="btn-month">October</button>
-                <button type="button" class="btn-month">November</button>
-                <button type="button" class="btn-month">December</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">January</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">February</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">March</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">April</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">May</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">June</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">July</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">August</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">September</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">October</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">November</button>
+                <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">December</button>
                 </div>
                 <div className="ml-28 mt-14 grid grid-cols-5">
                     {upcomingMovies?.map((items)=> {
@@ -193,4 +189,4 @@ function Homepage(){
 
 
 
-export default Homepage;
+export default Home;

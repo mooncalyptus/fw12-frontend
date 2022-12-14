@@ -16,13 +16,16 @@ import ManageMovie from "./ManageMovie";
 import Dashboard from "./Dashboard";
 import ManageSchedule from "./ManageSchedule";
 import TesPage from "./TesPage";
+import Home from "./Home";
+import MovieDetail from "./MovieDetail";
 
 const Main = ()=> {
   return(
     <BrowserRouter>
     <Routes>
       <Route path="/signin" element={<SignIn/>} />
-      <Route path="/homepage" element={<Homepage/>} />
+      <Route path="/home" element={<Home/>} />
+      <Route path="/" element={<Homepage/>} />
       <Route path="/viewall" element={<ViewAll/>} />
       <Route path="/signup" element={<SignUp/>} />
       <Route path="/forgotpassword" element={<ForgotPassword/>} />
@@ -37,6 +40,7 @@ const Main = ()=> {
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/manageschedule" element={<ManageSchedule/>} />
       <Route path="/tespage" element={<TesPage/>} />
+      <Route path="/moviedetail" element={<MovieDetail/>} />
     </Routes>
     </BrowserRouter>
   )
