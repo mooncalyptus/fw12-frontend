@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function SignUp(){   
+
+function SignUp(){ 
+    const navigate = useNavigate()
     const url = "http://localhost:8888/auth/register"
     const [data, setData] = useState({
         firstName: "",
@@ -19,6 +22,7 @@ function SignUp(){
             email: data.email,
             password: data.password
         })
+        navigate('/signin')
         .then(res=> {
             console.log(res.data)
         })

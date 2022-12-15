@@ -17,7 +17,6 @@ import Dashboard from "./Dashboard";
 import ManageSchedule from "./ManageSchedule";
 import TesPage from "./TesPage";
 import Home from "./Home";
-import MovieDetail from "./MovieDetail";
 
 const Main = ()=> {
   return(
@@ -40,7 +39,6 @@ const Main = ()=> {
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/manageschedule" element={<ManageSchedule/>} />
       <Route path="/tespage" element={<TesPage/>} />
-      <Route path="/moviedetail" element={<MovieDetail/>} />
     </Routes>
     </BrowserRouter>
   )
