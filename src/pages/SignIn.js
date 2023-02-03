@@ -1,13 +1,17 @@
 import React from "react";
 import axios from "axios";
+// import { useDispatch } from "react-redux";
+// import {login as loginAction} from '../redux/reducers/auth'
 import { Link, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
     const navigate = useNavigate()
     const url = "http://localhost:8888/auth/login"
+    // const dispatch = useDispatch;
     const login = async (e) => {
         try {
             e.preventDefault()
+            // dispatch(loginAction('hghgfjhgdhgfjfhjfjh'))
             const email = e.target.email.value
             const password = e.target.password.value
             const results = await axios.post(url, { email, password })

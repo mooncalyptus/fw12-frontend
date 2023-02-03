@@ -17,6 +17,7 @@ import Dashboard from "./Dashboard";
 import ManageSchedule from "./ManageSchedule";
 import TesPage from "./TesPage";
 import Home from "./Home";
+import MovieDetails from "./MovieDetails";
 
 const Main = ()=> {
   return(
@@ -26,6 +27,7 @@ const Main = ()=> {
       <Route path="/home" element={<Home/>} />
       <Route path="/" element={<Homepage/>} />
       <Route path="/viewall" element={<ViewAll/>} />
+      <Route path="/moviedetails" element={<MovieDetails/>} />
       <Route path="/signup" element={<SignUp/>} />
       <Route path="/forgotpassword" element={<ForgotPassword/>} />
       <Route path="/orderpage" element={<OrderPage/>} />
