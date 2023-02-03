@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 
 function DisplayData({ data }) {
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import Dropdown from "./Dropdown";
 import DropdownLocation from "./DropdownLocation";
 import DropdownPremiere from "./DropdownPremiere";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 
 function Dashboard() {
     return (

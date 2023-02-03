@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 import ProfileContainer from "./ProfileContainer";
 
 function OrderHistory(){
