@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import http from "../helpers/http";
 import Navbar from "../components/Navbar"
@@ -25,7 +24,7 @@ function ShowingGrid({ data }) {
 function UpcomingGrid({ data }) {
     return (
         <div className="grid justify-items-center gap-3">
-            <img src={"http://localhost:5555/uploads/".concat(data.picture)} className="rounded" alt={data.title}></img>
+            <img src={data.picture} className="w-40 rounded" alt={data.title} />
             <div>{data.title}</div>
             <Link to="/viewall"> <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button></Link>
         </div>
