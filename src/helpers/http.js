@@ -7,7 +7,7 @@ const http = (token) => {
   }
   const instance = axios.create({
     // baseURL: 'http://localhost:8888',
-    baseURL: process.env.DATA_BACKEND || 'https://fw12-collab2-backend.vercel.app',
+    baseURL: process.env.DATA_BACKEND || 'https://fw12-backend-three.vercel.app/',
     headers,
     keepAlive: true,
   });

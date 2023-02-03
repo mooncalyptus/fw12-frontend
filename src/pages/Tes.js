@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import http from "../helpers/http";
-import Navbar from "../components/Navbar"
+
 
 function ShowingGrid({data}){
     const [isShown, setisShown] = useState(false)
@@ -53,7 +53,7 @@ function Homepage(){
         return(
             <>
             <div className="font-mulish">
-                {/* <div className="bg-white flex">
+                <div className="bg-white flex">
                 <div className="flex items-center grow mx-32">
                 <img src={require('../assets/images/logo.png')} className="w-32" alt="desc"/>
                 <div className="mx-20">Home</div>
@@ -64,9 +64,7 @@ function Homepage(){
                 <Link to="/signin"><button type="button" className="text-black bg-[#9ED5C5] hover:bg-blue-800 hover:text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-4 w-30">Sign In</button> </Link>
                 </>
                 </div>
-                </div> */}
-
-                <Navbar />
+                </div>
     
                 <div className="grid grid-cols-2 my-12">
                     <div className="grid content-center justify-center">
