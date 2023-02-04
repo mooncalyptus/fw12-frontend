@@ -18,30 +18,32 @@ import ManageSchedule from "./ManageSchedule";
 import TesPage from "./TesPage";
 import Home from "./Home";
 import MovieDetails from "./MovieDetails";
+import LoginPage from "./LoginPage";
 
-const Main = ()=> {
-  return(
+const Main = () => {
+  return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/signin" element={<SignIn />} />
-      <Route path="/home" element={<Home/>} />
-      <Route path="/" element={<Homepage/>} />
-      <Route path="/viewall" element={<ViewAll/>} />
-      <Route path="/moviedetails" element={<MovieDetails/>} />
-      <Route path="/signup" element={<SignUp/>} />
-      <Route path="/forgotpassword" element={<ForgotPassword/>} />
-      <Route path="/orderpage" element={<OrderPage/>} />
-      <Route path="/paymentpage" element={<PaymentPage/>} />
-      <Route path="/profilepage" element={<ProfilePage/>} />
-      <Route path="/orderhistory" element={<OrderHistory/>} />
-      <Route path="/ticketresult" element={<TicketResult/>} />
-      <Route path="/ticketused" element={<TicketUsed/>} />
-      <Route path="/ticketexpired" element={<TicketExpired/>} />
-      <Route path="/managemovie" element={<ManageMovie/>} />
-      <Route path="/dashboard" element={<Dashboard/>} />
-      <Route path="/manageschedule" element={<ManageSchedule/>} />
-      <Route path="/tespage" element={<TesPage/>} />
-    </Routes>
+      <Routes>
+        <Route path="/login-page" element={<LoginPage />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/viewall" element={<ViewAll />} />
+        <Route path="/moviedetails" element={<MovieDetails />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/orderpage" element={<OrderPage />} />
+        <Route path="/paymentpage" element={<PaymentPage />} />
+        <Route path="/profilepage" element={<ProfilePage />} />
+        <Route path="/orderhistory" element={<OrderHistory />} />
+        <Route path="/ticketresult" element={<TicketResult />} />
+        <Route path="/ticketused" element={<TicketUsed />} />
+        <Route path="/ticketexpired" element={<TicketExpired />} />
+        <Route path="/managemovie" element={<ManageMovie />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/manageschedule" element={<ManageSchedule />} />
+        {/* <Route path="/tespage" element={<TesPage />} /> */}
+      </Routes>
     </BrowserRouter>
   )
 }

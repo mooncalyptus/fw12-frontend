@@ -25,7 +25,7 @@ const SignIn = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const [eyeClicked, setEyeClicked] = React.useState(false)
+    const [eyeClicked, setEyeClicked] = useState(false)
     const showPassword = () => {
         if (eyeClicked === false) {
             setEyeClicked(true)
@@ -52,7 +52,7 @@ const SignIn = () => {
         <>
             <section>
                 <div className="flex">
-                    <div className="hidden md:block flex-[55%]">
+                    <div className="hidden md:block flex-[55%] h-screen">
                         <img src={require('../assets/images/bg.png')} alt="desc" />
                     </div>
                     <div className="flex-[45%] py-10 md:py-0">
@@ -60,17 +60,16 @@ const SignIn = () => {
                             <div className="text-5xl font-semibold">Sign In</div>
                             <div className="text-lg font-normal">Fill your additional details</div>
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center pt-4">
                             <Formik
                                 initialValues={{
                                     email: '',
                                     password: ''
                                 }}
                                 validationSchema={LoginSchema}
-                                onSubmit={(value) => login(value)}
-                            >
-                                {({ errors, touched }) => {
-                                    <Form className="flex flex-col items-center gap-8">
+                                onSubmit={(value) => login(value)}>
+                                {({ errors, touched }) => (
+                                    <Form className='flex flex-col items-center gap-8'>
                                         <div className='w-[25rem] border-b-2 md:border-b-0'>
                                             <label>Email Address :</label><br />
                                             <Field type='email' name='email' placeholder='Enter your email adress' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl' />
@@ -86,7 +85,7 @@ const SignIn = () => {
                                             <button type="submit" className="btn btn-outline btn-accent">Sign Up</button>
                                         </div>
                                     </Form>
-                                }}
+                                )}
                             </Formik>
                         </div>
                     </div>
