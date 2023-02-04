@@ -23,7 +23,7 @@ const Main = ()=> {
   return(
     <BrowserRouter>
     <Routes>
-      <Route path="/signin" element={<SignIn/>} />
+      <Route path="/signin" element={<SignIn />} />
       <Route path="/home" element={<Home/>} />
       <Route path="/" element={<Homepage/>} />
       <Route path="/viewall" element={<ViewAll/>} />

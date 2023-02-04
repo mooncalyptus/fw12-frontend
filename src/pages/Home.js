@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar"
 import http from "../helpers/http"
+import NavbarLogin from "../components/NavbarLogin";
 
 
 
@@ -55,7 +55,7 @@ function Home(){
         return(
             <>
             <div className="font-mulish">
-                <Navbar></Navbar>
+                <NavbarLogin />
                 <div className="grid grid-cols-2 my-12">
                     <div className="grid content-center justify-center">
                         <div className="text-[#A0A3BD] text-2xl">Nearest Cinema, Newest Movie, </div>
