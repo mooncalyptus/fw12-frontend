@@ -19,6 +19,7 @@ import TesPage from "./TesPage";
 import Home from "./Home";
 import MovieDetails from "./MovieDetails";
 import LoginPage from "./LoginPage";
+import UpdatePassword from "./UpdatePassword";
 
 const Main = () => {
   return (
@@ -32,6 +33,7 @@ const Main = () => {
         <Route path="/moviedetails" element={<MovieDetails />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/updatepassword" element={<UpdatePassword />} />
         <Route path="/orderpage" element={<OrderPage />} />
         <Route path="/paymentpage" element={<PaymentPage />} />
         <Route path="/profilepage" element={<ProfilePage />} />

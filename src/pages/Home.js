@@ -10,7 +10,7 @@ function ShowingGrid({data}){
     const [isShown, setisShown] = useState(false)
     return(
         <div className="grid justify-items-center">
-            <img src={"http://localhost:5555/uploads/".concat(data.picture)} className="w-40 rounded" alt={data.title}
+            <img src={data.picture} className="w-40 rounded" alt={data.title}
             onMouseEnter={()=> setisShown(true)}
             onMouseLeave={()=> setisShown(false)}/>
             {isShown && (
@@ -26,15 +26,15 @@ function ShowingGrid({data}){
 function UpcomingGrid({data}){
     return(
         <div className="grid justify-items-center">
-            <img src={"http://localhost:5555/uploads/".concat(data.picture)} className="w-40 h-60 rounded" alt={data.title}></img>
+            <img src={data.picture} className="w-40 h-60 rounded" alt={data.title}></img>
             <div className="text-center">{data.title}</div>
             <Link to="/viewall"> <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button></Link>
         </div>
     )
 }
 function Home(){
-    const [nowShowing, setNowShowing] = React.useState([])
-    const [upcomingMovies, setUpcomingMovies] = React.useState([])
+    const [nowShowing, setNowShowing] = useState([])
+    const [upcomingMovies, setUpcomingMovies] = useState([])
     React.useEffect(()=> {
         getNowShowing().then((data)=> {
             setNowShowing(data.results);
@@ -45,11 +45,11 @@ function Home(){
     },[]);
 
     const getNowShowing = async ()=> {
-        const {data} = await http.get("/movies/nowShowing");
+        const {data} = await http().get("/movies/nowShowing");
         return data;
     }
     const getUpcomingMovies = async()=> {
-        const {data} = await http.get("/movies/upcoming");
+        const {data} = await http().get("/movies/upcoming");
         return data;
     }
         return(
