@@ -1,54 +1,108 @@
-// import React from "react";
-// import axios from "axios";
-// import http from "../helpers/http";
-// import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Formik, Form, Field } from 'formik'
+import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
+import http from "../helpers/http";
+import FeatherIcon from 'feather-icons-react'
 
-// const SignIn = () => {
-//     const navigate = useNavigate()
-//     // const dispatch = useDispatch;
-//     const login = async (e) => {
-//         try {
-//             e.preventDefault()
-//             // dispatch(loginAction('hghgfjhgdhgfjfhjfjh'))
-//             const email = e.target.email.value
-//             const password = e.target.password.value
-//             const results = await http().post("/auth/login", { email, password })
-//             console.log(results)
-//             if (email && password) {
-//                 navigate('/home')
-//             }
-//         } catch (err) {
-//             console.log(err.response.data)
-//             alert('Unknown email/password. Please Sign Up First')
-//         }
-//     }
-//     return (
-//         <div className="grid grid-cols-3 font-mulish">
-//             <div className="col-span-2">
-//                 <img src={require('../assets/images/bg.png')} alt="desc" />
-//             </div>
-//             <div className="px-8 py-8">
-//                 <div className="text-5xl font-semibold">Sign In</div>
-//                 <div className="text-lg mt-2 text-[#AAAAAA]">Sign in with your data that you entered during your registration</div>
-//                 <div className="">
-//                     <form onSubmit={login}>
-//                         <div className="text-base">Email</div>
-//                         <input type="email" name="email" className="form-input w-full rounded placeholder:text-slate-400 mt-4" placeholder="Write your email"></input>
-//                         <div className="text-base mt-4">Password</div>
-//                         <input type="password" name="password" className="form-input w-full rounded placeholder:text-slate-400 mt-4" placeholder="Write your password"></input>
-//                         <div></div>
-//                         <>
-//                             <button type="submit" className="text-black bg-[#9ED5C5] hover:bg-blue-800 hover:text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-4 w-full">Sign In</button>
-//                         </>
-//                     </form>
-//                     <div className="flex flex-col">
-//                         <div className="flex justify-center">Forgot your password? <span className="text-[#8EC3B0]"> Reset now </span></div>
-//                         <div className="flex justify-center">Don’t have an account? <Link to="/signup"><span className="text-[#8EC3B0]"> Sign Up </span></Link></div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
+const UpdateSchema = Yup.object().shape({
+    code: Yup.string().required('Reset Code required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string()
+        .password()
+        .min(8, 'Min length 8')
+        .minLowercase(1, 'Min lowercase 1')
+        .minUppercase(1, 'Min uppercase 1')
+        .minSymbols(1, 'Min symbol 1')
+        .minNumbers(1, 'Min number 1')
+        .required('Password required'),
+    confirmPassword: Yup.string().oneOf(
+        [Yup.ref('password'), null],
+        'Passwords must match',
+    )
+})
 
-// export default SignIn;
+const UpdatePassword = () => {
+    const navigate = useNavigate()
+
+    const [eyeClicked, setEyeClicked] = useState(false)
+    const showPassword = () => {
+        if (eyeClicked === false) {
+            setEyeClicked(true)
+        } else {
+            setEyeClicked(false)
+        }
+    }
+
+    const SetPassword = async (value) => {
+        try {
+            const response = await http().post("/auth/resetPassword", value)
+            navigate('/signin')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    return (
+        <>
+            <div className="grid grid-cols-3 font-mulish">
+                <div className="hidden lg:block bg-fixed bg-[#DEF5E5] h-screen col-span-2 relative">
+                    <div className="flex justify-center items-center mx-8 my-12">
+                        <img src={require('../assets/images/forgot-password.png')} alt="desc" className="w-[400px] h-[400px]" />
+                    </div>
+                </div>
+                <div>
+                    <div className="flex flex-col pt-20 pl-3 gap-3">
+                        <div className="text-5xl font-semibold">Update Password</div>
+                        <div className="text-lg font-normal">Fill your additional details</div>
+                    </div>
+                    <Formik
+                        initialValues={{
+                            code: '',
+                            email: '',
+                            password: '',
+                            confirmPassword: ''
+                        }}
+                        validationSchema={UpdateSchema}
+                        onSubmit={(value) => SetPassword(value)}>
+                        {({
+                            errors, touched
+                        }) => (
+                            <Form className='flex flex-col items-center gap-8 mt-4'>
+                                <div className='ml-5 w-full border-b-2 md:border-b-0'>
+                                    <label>Code :</label><br />
+                                    <Field type='code' name='code' placeholder='Enter your code' className='w-96 input md:input-bordered bg-transparent focus:outline-none mt-2 rounded-2xl' />
+                                    {errors.code && touched.code ? <div className='absolute text-red-500 text-sm'>{errors.code}</div> : null}
+                                </div>
+                                <div className='ml-5 w-full border-b-2 md:border-b-0'>
+                                    <label>Email Address :</label><br />
+                                    <Field type='email' name='email' placeholder='Enter your email adress' className='w-96 input md:input-bordered bg-transparent focus:outline-none mt-2 rounded-2xl' />
+                                    {errors.email && touched.email ? <div className='absolute text-red-500 text-sm'>{errors.email}</div> : null}
+                                </div>
+                                <div className='w-[25rem] relative border-b-2 md:border-b-0'>
+                                    <label>Password :</label><br />
+                                    <FeatherIcon onClick={showPassword} icon={eyeClicked ? 'eye-off' : 'eye'} className='absolute right-5 bottom-3 opacity-20 cursor-pointer' />
+                                    <Field type={eyeClicked ? 'text' : 'password'} name='password' placeholder='Enter your password' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl' />
+                                    {errors.password && touched.password ? <div className='text-red-500 text-sm absolute'>{errors.password}</div> : null}
+                                </div>
+                                <div className='w-[25rem] relative border-b-2 md:border-b-0'>
+                                    <label>Confirm Password :</label><br />
+                                    <FeatherIcon onClick={showPassword} icon={eyeClicked ? 'eye-off' : 'eye'} className='absolute right-5 bottom-3 opacity-20 cursor-pointer' />
+                                    <Field type={eyeClicked ? 'text' : 'password'} name='password' placeholder='Enter your Confirm Password' className='input md:input-bordered bg-transparent focus:outline-none mt-2 w-full rounded-2xl' />
+                                    {errors.confirmPassword && touched.confirmPassword ? <div className='text-red-500 text-sm absolute'>{errors.confirmPassword}</div> : null}
+                                </div>
+                                <div className='mt-3'>
+                                    <button type="submit" className="btn btn-outline btn-accent">Sign Up</button>
+                                </div>
+                            </Form>
+                        )}
+                    </Formik>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default UpdatePassword

@@ -34,7 +34,7 @@ function ForgotPassword() {
             </div>
             <div>
                 <div className="flex flex-col pt-20 pl-3 gap-3">
-                    <div className="text-5xl font-semibold">Sign In</div>
+                    <div className="text-5xl font-semibold">Forgot Password</div>
                     <div className="text-lg font-normal">Fill your additional details</div>
                 </div>
                 <Formik
@@ -53,7 +53,7 @@ function ForgotPassword() {
                                 {errors.email && touched.email ? <div className='absolute text-red-500 text-sm'>{errors.email}</div> : null}
                             </div>
                             <div className='mt-3'>
-                                <button type="submit" className="btn btn-outline btn-accent">Sign Up</button>
+                                <button type="submit" className="btn btn-outline btn-accent">Forgot Password</button>
                             </div>
                         </Form>
                     )}
