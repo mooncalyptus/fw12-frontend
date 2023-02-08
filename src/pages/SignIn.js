@@ -14,7 +14,7 @@ const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Required'),
     password: Yup.string()
         .password()
-        .min(8, 'Min lenght 8')
+        .min(8, 'Min length 8')
         .minLowercase(1, 'Min lowercase 1')
         .minUppercase(1, 'Min uppercase 1')
         .minSymbols(1, 'Min symbol 1')

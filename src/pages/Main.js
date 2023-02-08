@@ -44,7 +44,7 @@ const Main = () => {
         <Route path="/managemovie" element={<ManageMovie />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/manageschedule" element={<ManageSchedule />} />
-        {/* <Route path="/tespage" element={<TesPage />} /> */}
+        <Route path="/tespage" element={<TesPage />} />
       </Routes>
     </BrowserRouter>
   )
