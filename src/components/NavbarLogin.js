@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import { logout as logoutAction } from "../redux/reducers/auth";
+import http from '../helpers/http'
 
 
 const NavbarLogin = () => {
@@ -12,6 +13,25 @@ const NavbarLogin = () => {
     dispatch(logoutAction())
     navigate("/signin")
   }
+
+  const token = useSelector((state) => state?.auth?.token.token)
+  const [bio, setBio] = useState({})
+
+   const getProfile = async () => {
+    try{
+      const response = await http(token).get("/profile")
+      setBio(response?.data?.results)
+    } catch (error) {
+      if(error) throw error
+    }
+   }
+
+   useEffect(() => {
+    if(token){
+      getProfile()
+    }
+   }, [token])
+
   return (
     <>
       <div className="navbar bg-base-100">
@@ -25,7 +45,11 @@ const NavbarLogin = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={require('../assets/images/profile.png')} alt="profile"/>
+                {bio?.picture ? (
+                  <img src={bio?.picture} alt="profile"/>
+                ) : (
+                  <img src={require('../assets/images/profile.png')} alt="profile"/>
+                )}
               </div>
             </label>
             <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
