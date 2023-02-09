@@ -1,6 +1,7 @@
 import { React, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import http from "../helpers/http"
+import withAuth from "../components/hoc/WithAuth"
 import { Formik, Form, Field } from 'formik'
 import { useDispatch } from 'react-redux'
 import { login as loginAction } from '../redux/reducers/auth'
@@ -101,3 +102,4 @@ const SignIn = () => {
 }
 
 export default SignIn
+// export default withAuth(SignIn)

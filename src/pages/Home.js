@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import http from "../helpers/http"
+import withAuth from "../components/hoc/WithAuth"
 import NavbarLogin from "../components/NavbarLogin";
 
 
@@ -184,3 +185,4 @@ function Home(){
 
 
 export default Home;
+// export default withAuth(Home)

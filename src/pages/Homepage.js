@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import http from "../helpers/http";
+import withAuth from "../components/hoc/WithAuth";
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer";
 
@@ -126,5 +127,5 @@ function Homepage() {
 
 
 
-
-export default Homepage;
+export default Homepage
+// export default withAuth(Homepage)
