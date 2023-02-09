@@ -73,9 +73,9 @@ function Homepage() {
                             <div className="text-[#9ED5C5] text-2xl font-bold">Now Showing</div>
                             <hr class="w-48 h-1 bg-[#8EC3B0] rounded"></hr>
                         </div>
-                        <div className="text-[#9ED5C5] font-bold">view all</div>
+                       <Link to="/viewall"> <div className="text-[#9ED5C5] font-bold">view all</div></Link>
                     </div>
-                    <div className="ml-28 mr-8 grid grid-cols-3">
+                    <div className="ml-28 mr-8 grid grid-cols-5">
                         {nowShowing?.map((items) => {
                             return (
                                 <React.Fragment key={String(items.id)}>

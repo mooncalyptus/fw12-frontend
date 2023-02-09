@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import http from "../helpers/http"
 import { useDispatch } from 'react-redux'
 import { login as loginAction } from '../redux/reducers/auth'
@@ -112,6 +112,9 @@ const SignUp = () => {
                             </Form>
                         )}
                     </Formik>
+                </div>
+                <div className="flex flex-col gap-3 mt-4">
+                    <Link to="/signin"><div className="flex justify-center items-center">Already have account? <p className="underline">Sign In here</p></div></Link>
                 </div>
             </div>
         </div>

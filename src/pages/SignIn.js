@@ -91,8 +91,8 @@ const SignIn = () => {
                         </div>
 
                         <div className="flex flex-col gap-3 mt-4">
-                        <Link to="/signup"><div className="flex justify-center items-center">Don`t have account? <p className="underline">Sign Up here</p></div></Link>
-                        <Link to="/forgotpassword"><div className="flex justify-center items-center">Forgot your password? <p className="underline">Forgot Password</p></div></Link>
+                            <Link to="/signup"><div className="flex justify-center items-center">Don`t have account? <p className="underline">Sign Up here</p></div></Link>
+                            <Link to="/forgotpassword"><div className="flex justify-center items-center">Forgot your password? <p className="underline">Forgot Password</p></div></Link>
                         </div>
                     </div>
                 </div>

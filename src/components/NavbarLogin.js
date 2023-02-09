@@ -58,6 +58,16 @@ const NavbarLogin = () => {
                   Profile
                 </Link>
               </li>
+              <li>
+                <Link to="/home">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/viewall">
+                  List Movie
+                </Link>
+              </li>
               <li><button onClick={LogoutProcess}>Logout</button></li>
             </ul>
           </div>
