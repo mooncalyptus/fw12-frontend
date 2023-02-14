@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {useSelector} from 'react-redux';
 import SignIn from "./SignIn";
 import Homepage from "./Homepage";
 import ViewAll from "./ViewAll";
@@ -18,32 +17,87 @@ import ManageSchedule from "./ManageSchedule";
 import TesPage from "./TesPage";
 import Home from "./Home";
 import MovieDetails from "./MovieDetails";
-import LoginPage from "./LoginPage";
 import UpdatePassword from "./UpdatePassword";
+import WithAuth from "../components/hoc/WithAuth";
 
 const Main = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login-page" element={<LoginPage />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="/viewall" element={<ViewAll />} />
-        <Route path="/moviedetails" element={<MovieDetails />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/updatepassword" element={<UpdatePassword />} />
-        <Route path="/orderpage" element={<OrderPage />} />
-        <Route path="/paymentpage" element={<PaymentPage />} />
-        <Route path="/profilepage" element={<ProfilePage />} />
-        <Route path="/orderhistory" element={<OrderHistory />} />
-        <Route path="/ticketresult" element={<TicketResult />} />
-        <Route path="/ticketused" element={<TicketUsed />} />
-        <Route path="/ticketexpired" element={<TicketExpired />} />
-        <Route path="/managemovie" element={<ManageMovie />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/manageschedule" element={<ManageSchedule />} />
+
+        <Route path="/" element={
+            <Homepage />
+        } />
+
+        {/* <Route path="/home" element={
+          <WithAuth>
+            <Home />
+          </WithAuth>
+        } /> */}
+        <Route path="/viewall" element={
+          <WithAuth>
+            <ViewAll />
+          </WithAuth>
+        } />
+        <Route path="/moviedetails" element={
+          <WithAuth>
+            <MovieDetails />
+          </WithAuth>
+        } />
+        <Route path="/orderpage" element={
+          <WithAuth>
+            <OrderPage />
+          </WithAuth>
+        } />
+        <Route path="/paymentpage" element={
+          <WithAuth>
+            <PaymentPage />
+          </WithAuth>
+        } />
+        <Route path="/profilepage" element={
+          <WithAuth>
+            <ProfilePage />
+          </WithAuth>
+        } />
+        <Route path="/orderhistory" element={
+          <WithAuth>
+            <OrderHistory />
+          </WithAuth>
+        } />
+        <Route path="/ticketresult" element={
+          <WithAuth>
+            <TicketResult />
+          </WithAuth>
+        } />
+        <Route path="/ticketused" element={
+          <WithAuth>
+            <TicketUsed />
+          </WithAuth>
+        } />
+        <Route path="/ticketexpired" element={
+          <WithAuth>
+            <TicketExpired />
+          </WithAuth>
+        } />
+        <Route path="/managemovie" element={
+          <WithAuth>
+            <ManageMovie />
+          </WithAuth>
+        } />
+        <Route path="/dashboard" element={
+          <WithAuth>
+            <Dashboard />
+          </WithAuth>
+        } />
+        <Route path="/manageschedule" element={
+          <WithAuth>
+            <ManageSchedule />
+          </WithAuth>
+        } />
         <Route path="/tespage" element={<TesPage />} />
       </Routes>
     </BrowserRouter>

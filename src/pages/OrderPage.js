@@ -10,7 +10,7 @@ function OrderPage(){
             <div className="flex">
                 <div className="flex items-center grow mx-32">
                 <img src={require('../assets/images/logo.png')} className="w-32" alt="desc"/>
-                <Link to ="/homepage"><div className="mx-20">Home</div></Link>
+                <Link to ="/"><div className="mx-20">Home</div></Link>
                 <div className="mx-3">List Movie</div>
                 </div>
                 <div className="mr-32 mt-4 flex">

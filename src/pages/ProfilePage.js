@@ -29,7 +29,7 @@ function ProfilePage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const token = useSelector((state) => state?.auth?.token.token)
+    const token = useSelector((state) => state.auth.token)
     const [bio, setBio] = useState({})
 
     const getProfile = async () => {

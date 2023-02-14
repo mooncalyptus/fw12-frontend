@@ -14,7 +14,7 @@ const NavbarLogin = () => {
     navigate("/signin")
   }
 
-  const token = useSelector((state) => state?.auth?.token.token)
+  const token = useSelector((state) => state.auth.token)
   const [bio, setBio] = useState({})
 
   const getProfile = async () => {
@@ -43,6 +43,10 @@ const NavbarLogin = () => {
             <input type="text" placeholder="Search" className="input input-bordered" />
           </div>
           <div className="dropdown dropdown-end">
+            {!token && 
+            <Link to="/signin"> <button className="btn btn-outline btn-accent">Sign In</button></Link>}
+            {token && 
+            <>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 {bio?.picture ? (
@@ -59,7 +63,7 @@ const NavbarLogin = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/home">
+                <Link to="/">
                   Home
                 </Link>
               </li>
@@ -70,6 +74,7 @@ const NavbarLogin = () => {
               </li>
               <li><button onClick={LogoutProcess}>Logout</button></li>
             </ul>
+            </>}
           </div>
         </div>
       </div>

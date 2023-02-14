@@ -36,14 +36,14 @@ const SignIn = () => {
     }
 
     const cb = () => {
-        navigate('/home')
+        navigate('/')
     }
     const login = async (value) => {
         try {
             const response = await http().post('/auth/login', value)
             const token = response?.data?.results?.token
             const decode = jwt_decode(token)
-            dispatch(loginAction({ token }))
+            dispatch(loginAction( token ))
             cb()
         } catch (error) {
             console.log(error)

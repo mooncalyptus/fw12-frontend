@@ -43,7 +43,7 @@ const SignUp = () => {
     }
 
     const cb = () => {
-        navigate('/home')
+        navigate('/')
     }
 
     const register = async (value) => {

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import http from "../helpers/http";
 import withAuth from "../components/hoc/WithAuth";
 import Navbar from "../components/Navbar"
+import NavbarLogin from "../components/NavbarLogin";
 import Footer from "../components/Footer";
 
 function ShowingGrid({ data }) {
@@ -53,7 +54,7 @@ function Homepage() {
     }
     return (
         <>
-            <Navbar />
+            <NavbarLogin />
             <div className="font-mulish">
                 {/* Header */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 py-12 gap-3">
@@ -128,4 +129,3 @@ function Homepage() {
 
 
 export default Homepage
-// export default withAuth(Homepage)
