@@ -14,8 +14,6 @@ import TicketExpired from "./TicketExpired";
 import ManageMovie from "./ManageMovie";
 import Dashboard from "./Dashboard";
 import ManageSchedule from "./ManageSchedule";
-import TesPage from "./TesPage";
-import Home from "./Home";
 import MovieDetails from "./MovieDetails";
 import UpdatePassword from "./UpdatePassword";
 import WithAuth from "../components/hoc/WithAuth";
@@ -32,12 +30,6 @@ const Main = () => {
         <Route path="/" element={
             <Homepage />
         } />
-
-        {/* <Route path="/home" element={
-          <WithAuth>
-            <Home />
-          </WithAuth>
-        } /> */}
         <Route path="/viewall" element={
           <WithAuth>
             <ViewAll />
@@ -98,7 +90,6 @@ const Main = () => {
             <ManageSchedule />
           </WithAuth>
         } />
-        <Route path="/tespage" element={<TesPage />} />
       </Routes>
     </BrowserRouter>
   )

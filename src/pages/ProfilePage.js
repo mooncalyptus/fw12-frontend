@@ -25,7 +25,11 @@ const ProfileSchema = Yup.object().shape({
         'Passwords must match',
     )
 })
-function ProfilePage() {
+const ProfilePage = () => {
+    const [preview, setPreview] = useState('')
+    const [file, setFiles] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -48,19 +52,19 @@ function ProfilePage() {
     }, [token])
 
     const upload = async (e) => {
-        e.preventDefault()
-        const file = e.target.picture.files[0]
         if (file?.size > 1024 * 1024 * 2) {
             window.alert("File too large")
         } else {
             try {
                 const form = new FormData()
-                form.append("picture, file")
-                const { data } = await http().patch("/profile", form, {
+                form.append("picture", file)
+                const { data } = await http(token).patch("/profile", form, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
                 })
+                getProfile()
+                document.getElementById('my-modal-4').click()
             } catch (error) {
                 window.alert(error.response.data.message)
             }
@@ -74,12 +78,23 @@ function ProfilePage() {
             firstName: e.target.firstName.value,
             lastName: e.target.lastName.value,
             email: e.target.email.value,
-            phoneNumber: e.target.phoneNumber.value,
-            password: e.target.password.value,
-            confirmPassword: e.target.confirmPassword.value
+            phoneNumber: e.target.phoneNumber.value
         }
         await http(token).patch("/profile", values)
     }
+
+    const UpdatePassword = async (e) => {
+        try{
+            e.preventDefault()
+            const {data} = await http(token).patch("/profile", {
+                password, confirmPassword
+            })
+            console.log('data masuk')
+        } catch (error) {
+            if(error) throw error
+        }
+    }
+
 
     const [eyeClicked1, setEyeClicked1] = useState(false)
     const showConfirmPassword = () => {
@@ -120,8 +135,18 @@ function ProfilePage() {
                                 <input type="checkbox" id="my-modal-4" className="modal-toggle" />
                                 <label htmlFor="my-modal-4" className="modal cursor-pointer">
                                     <label className="modal-box relative" htmlFor="">
-                                        <h3 className="text-lg font-bold">Congratulations random Internet user!</h3>
-                                        <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                                        {/* Form upload and preview image */}
+                                        <div className="flex flex-col justify-center items-center gap-3">
+                                            <div>Upload Image</div>
+                                            {preview && <img src={preview} alt="profile" className="w-24 h-24 border border-black rounded-full" />}
+                                            {!preview &&
+                                                <div className="border border-black py-6 px-6 rounded-full w-24 h-24 overflow-hidden">
+                                                    <FeatherIcon icon="upload-cloud" size={48} />
+                                                </div>
+                                            }
+                                            <input type="file" onChange={e => { setPreview(URL.createObjectURL(e.target.files[0])); setFiles(e.target.files[0]) }} className="file-input w-full max-w-xs" />
+                                            <button onClick={upload} className="btn btn-outline btn-accent">Select Image</button>
+                                        </div>
                                     </label>
                                 </label>
                             </div>
@@ -173,26 +198,31 @@ function ProfilePage() {
                                 </div>
                             </div>
                         </div>
-                        <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 w-[360px] h-[50px] mt-7">Update Changes</button>
-                        <div className="bg-white pl-8 mt-[22px] rounded-lg mr-[70px]">
-                            <form></form>
-                            <div className="pt-10">Account and Privacy</div>
-                            <hr className="my-8 bg-gray-200 border-2 dark:bg-gray-700"></hr>
-                            <div className="flex gap-x-[34px]">
-                                <div className='relative border-b-2 md:border-b-0'>
-                                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
-                                    <FeatherIcon onClick={showPassword} icon={eyeClicked ? 'eye-off' : 'eye'} className='absolute right-5 bottom-3 top-12 opacity-20 cursor-pointer' />
-                                    <input type={eyeClicked ? 'text' : 'password'} id="newPassword" className="input md:input-bordered bg-transparent focus:outline-none mt-2 w-64 rounded-2xl" required></input>
-                                </div>
-                                <div className="relative border-b-2 md:border-b-0">
-                                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
-                                    <FeatherIcon onClick={showConfirmPassword} icon={eyeClicked1 ? 'eye-off' : 'eye'} className='absolute right-5 bottom-3 top-12 opacity-20 cursor-pointer' />
-                                    <input type={eyeClicked1 ? 'text' : 'password'} id="confirmPassword" className="input md:input-bordered bg-transparent focus:outline-none mt-2 w-64 rounded-2xl" required></input>
+                        <button type="submit" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 w-[360px] h-[50px] mt-7">Update Changes</button>
+                    </form>
+
+                    <div>
+                        <form onSubmit={UpdatePassword}>
+                            <div className="bg-white pl-8 mt-[22px] rounded-lg mr-[70px]">
+                                <form></form>
+                                <div className="pt-10">Account and Privacy</div>
+                                <hr className="my-8 bg-gray-200 border-2 dark:bg-gray-700"></hr>
+                                <div className="flex gap-x-[34px]">
+                                    <div className='relative border-b-2 md:border-b-0'>
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New Password</label>
+                                        <FeatherIcon onClick={showPassword} icon={eyeClicked ? 'eye-off' : 'eye'} className='absolute right-5 bottom-3 top-12 opacity-20 cursor-pointer' />
+                                        <input type={eyeClicked ? 'text' : 'password'} id="newPassword" className="input md:input-bordered bg-transparent focus:outline-none mt-2 w-64 rounded-2xl" onChange={e => setPassword(e.target.value)} required></input>
+                                    </div>
+                                    <div className="relative border-b-2 md:border-b-0">
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
+                                        <FeatherIcon onClick={showConfirmPassword} icon={eyeClicked1 ? 'eye-off' : 'eye'} className='absolute right-5 bottom-3 top-12 opacity-20 cursor-pointer' />
+                                        <input type={eyeClicked1 ? 'text' : 'password'} id="confirmPassword" className="input md:input-bordered bg-transparent focus:outline-none mt-2 w-64 rounded-2xl" onChange={e => setConfirmPassword(e.target.value)} required></input>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 w-[360px] h-[50px] mt-7 mb-9">Update Changes</button>
-                    </form>
+                            <button type="submit" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 w-[360px] h-[50px] mt-7 mb-9">Update Changes</button>
+                        </form>
+                    </div>
                 </div>
 
             </div>
