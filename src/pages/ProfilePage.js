@@ -33,6 +33,11 @@ const ProfilePage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const LogoutProcess = () => {
+        dispatch(logoutAction())
+        navigate("/signin")
+      }
+
     const token = useSelector((state) => state.auth.token)
     const [bio, setBio] = useState({})
 
@@ -157,7 +162,7 @@ const ProfilePage = () => {
                         <div>
                             <hr className="my-8 bg-gray-200 border-2 dark:bg-gray-700"></hr>
                             <div className="flex justify-center pb-4">
-                                <button className="btn btn-outline btn-accent">Log Out</button>
+                                <button className="btn btn-outline btn-accent" onClick={LogoutProcess}>Log Out</button>
                             </div>
                         </div>
                     </div>
