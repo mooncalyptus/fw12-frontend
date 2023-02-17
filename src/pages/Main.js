@@ -35,7 +35,7 @@ const Main = () => {
             <ViewAll />
           </WithAuth>
         } />
-        <Route path="/moviedetails" element={
+        <Route path="/moviedetails/:id" element={
           <WithAuth>
             <MovieDetails />
           </WithAuth>

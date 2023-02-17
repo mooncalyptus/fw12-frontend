@@ -9,15 +9,17 @@ import Footer from "../components/Footer";
 function ShowingGrid({ data }) {
     const [isShown, setisShown] = useState(false)
     return (
-        <div className="grid justify-items-center">
-            <img src={data.picture} className="w-40 rounded" alt={data.title}
-                onMouseEnter={() => setisShown(true)}
-                onMouseLeave={() => setisShown(false)} />
+        <div className="grid justify-items-center" onClick={() => setisShown(true)}
+            onMouseLeave={() => setisShown(false)}>
+            <div>
+                <img src={data.picture} className="w-40 rounded" alt={data.title}
+                />
+            </div>
             {isShown && (
                 <div className="grid justify-items-center">
                     <div>{data.title}</div>
                     <div>{data.genre}</div>
-                    <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button>
+                    <Link to={"/moviedetails/" + data.id}> <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button> </Link>
                 </div>
             )}
         </div>
@@ -26,9 +28,13 @@ function ShowingGrid({ data }) {
 function UpcomingGrid({ data }) {
     return (
         <div className="grid justify-items-center gap-3">
-            <img src={data.picture} className="w-40 rounded" alt={data.title} />
+            <Link to={"/moviedetails/" + data.id}>
+                <div>
+                    <img src={data.picture} className="w-40 rounded" alt={data.title} />
+                </div>
+            </Link>
             <div>{data.title}</div>
-            <Link to="/viewall"> <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button></Link>
+            <Link to={"/moviedetails/" + data.id}> <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800 mt-4">Details</button></Link>
         </div>
     )
 }
@@ -74,7 +80,7 @@ function Homepage() {
                             <div className="text-[#9ED5C5] text-2xl font-bold">Now Showing</div>
                             <hr class="w-48 h-1 bg-[#8EC3B0] rounded"></hr>
                         </div>
-                       <Link to="/viewall"> <div className="text-[#9ED5C5] font-bold">view all</div></Link>
+                        <Link to="/viewall"> <div className="text-[#9ED5C5] font-bold">view all</div></Link>
                     </div>
                     <div className="ml-28 mr-8 grid grid-cols-5">
                         {nowShowing?.map((items) => {
@@ -111,10 +117,10 @@ function Homepage() {
                         <button type="button" class="btn-month">December</button>
                     </div>
                     <div className="ml-28 mt-14 grid grid-cols-5">
-                    {upcomingMovies?.map((items)=> {
-                            return(
+                        {upcomingMovies?.map((items) => {
+                            return (
                                 <React.Fragment key={String(items.id)}>
-                                <UpcomingGrid data={items} />
+                                    <UpcomingGrid data={items} />
                                 </React.Fragment>
                             )
                         })}

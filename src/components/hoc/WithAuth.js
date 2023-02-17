@@ -5,7 +5,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 function WithAuth({ children }) {
     const navigate = useNavigate()
     const token = useSelector((state) => state.auth.token)
-    console.log(token)
+    // console.log(token)
     React.useEffect(() => {
         if (!token) {
             navigate("/signin")
