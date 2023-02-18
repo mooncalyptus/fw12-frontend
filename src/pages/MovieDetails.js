@@ -1,15 +1,21 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import http from "../helpers/http";
+import { chooseMovie as chooseMovieActions } from "../redux/reducers/transactions";
 import moment from 'moment'
 import NavbarLogin from "../components/NavbarLogin"
 import Footer from "../components/Footer";
 
 const MovieDetails = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [movie, setMovie] = React.useState({})
     const [date, setDate] = React.useState('')
     const [city, setCity] = React.useState('')
     const [cityList, setCityList] = React.useState([])
+    const [selectedCinema, setSelectedCinema] = React.useState(null)
+    const [selectedTime, setSelectedTime] = React.useState('')
     const { id } = useParams()
     React.useEffect(() => {
         getMovieDetails(id)
@@ -19,8 +25,8 @@ const MovieDetails = () => {
         getCinemas()
     }, [city, date])
 
-    console.log(date, city)
-    console.log(cityList)
+    // console.log(date, city)
+    // console.log(cityList)
     // console.log(movie)
     const getMovieDetails = async (id) => {
         const { data } = await http().get("/movies/" + id)
@@ -34,6 +40,21 @@ const MovieDetails = () => {
         } catch (err) {
             if (err) throw err
         }
+    }
+
+    const chooseTime = (time, cinema) => {
+        setSelectedTime(time)
+        setSelectedCinema(cinema)
+    }
+
+    const book = () => {
+      dispatch(chooseMovieActions({
+        movieId: id,
+    cinemaId: selectedCinema,
+    bookingDate: date,
+    bookingTime: selectedTime,
+      }))   
+      navigate('/orderpage')
     }
     return (
         <>
@@ -108,18 +129,25 @@ const MovieDetails = () => {
                 </div>
 
                 <div>
-                    {cityList.map(items => {
-                        return (<div key={items.id} className="flex justify-center items-center mt-6">
+                    {cityList.map(cinema => {
+                        return (<div key={cinema.id} className="flex justify-center items-center mt-6">
                             <div className="bg-[#fff] w-[400px] border border-black rounded-lg">
                                 <div className="flex flex-col gap-3 pt-3">
-                                <span className="text-2xl font-semibold flex justify-center items-center">{items.name}</span>
-                                <div className="text-xs px-8">{items.address}</div>
+                                    <span className="text-2xl font-semibold flex justify-center items-center">{cinema.name}</span>
+                                    <div className="text-xs px-8">{cinema.address}</div>
                                 </div>
                                 <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-                                <div className="flex gap-3 justify-center items-center pb-6">
-                                <div>{items.time[0]}</div>
-                                <div>{items.time[1]}</div>
-                                <div>{items.time[2]}</div>
+                                <div className="grid grid-cols-4 pl-4 gap-3">
+                                    {cinema.time.map(time => <div>
+                                        <button className={`btn-ghost${cinema.id === selectedCinema && time === selectedTime && " text-emerald-400 font-bold"}`} onClick={() => chooseTime(time, cinema.id)}>{time}</button>
+                                        </div>)}
+                                </div>
+                                <div className="flex px-8">
+                                    <span className="grow">Price</span>
+                                    <span className="text-base font-semibold">{cinema.price}</span>
+                                </div>
+                                <div className="px-3 py-6"><button className="btn w-full btn-outline btn-accent" 
+                                disabled={selectedCinema !== cinema.id} onClick={book}>Book Now</button>
                                 </div>
                             </div>
                         </div>)
