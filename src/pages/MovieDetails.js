@@ -48,13 +48,13 @@ const MovieDetails = () => {
     }
 
     const book = () => {
-      dispatch(chooseMovieActions({
-        movieId: id,
-    cinemaId: selectedCinema,
-    bookingDate: date,
-    bookingTime: selectedTime,
-      }))   
-      navigate('/orderpage')
+        dispatch(chooseMovieActions({
+            movieId: id,
+            cinemaId: selectedCinema,
+            bookingDate: date,
+            bookingTime: selectedTime,
+        }))
+        navigate('/orderpage')
     }
     return (
         <>
@@ -140,14 +140,14 @@ const MovieDetails = () => {
                                 <div className="grid grid-cols-4 pl-4 gap-3">
                                     {cinema.time.map(time => <div>
                                         <button className={`btn-ghost${cinema.id === selectedCinema && time === selectedTime && " text-emerald-400 font-bold"}`} onClick={() => chooseTime(time, cinema.id)}>{time}</button>
-                                        </div>)}
+                                    </div>)}
                                 </div>
                                 <div className="flex px-8">
                                     <span className="grow">Price</span>
                                     <span className="text-base font-semibold">{cinema.price}</span>
                                 </div>
-                                <div className="px-3 py-6"><button className="btn w-full btn-outline btn-accent" 
-                                disabled={selectedCinema !== cinema.id} onClick={book}>Book Now</button>
+                                <div className="px-3 py-6"><button className="btn w-full btn-outline btn-accent"
+                                    disabled={selectedCinema !== cinema.id} onClick={book}>Book Now</button>
                                 </div>
                             </div>
                         </div>)

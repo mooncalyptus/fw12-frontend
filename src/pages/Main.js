@@ -16,6 +16,7 @@ import Dashboard from "./Dashboard";
 import ManageSchedule from "./ManageSchedule";
 import MovieDetails from "./MovieDetails";
 import UpdatePassword from "./UpdatePassword";
+import GridSeat from "./GridSeat";
 import WithAuth from "../components/hoc/WithAuth";
 
 const Main = () => {
@@ -28,7 +29,7 @@ const Main = () => {
         <Route path="/updatepassword" element={<UpdatePassword />} />
 
         <Route path="/" element={
-            <Homepage />
+          <Homepage />
         } />
         <Route path="/viewall" element={
           <WithAuth>
@@ -88,6 +89,11 @@ const Main = () => {
         <Route path="/manageschedule" element={
           <WithAuth>
             <ManageSchedule />
+          </WithAuth>
+        } />
+        <Route path="/gridseat" element={
+          <WithAuth>
+            <GridSeat />
           </WithAuth>
         } />
       </Routes>

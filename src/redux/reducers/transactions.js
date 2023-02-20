@@ -21,10 +21,13 @@ const transactions = createSlice({
             state.bookingDate = payload.bookingDate
             state.bookingTime = payload.bookingTime
             // return initialState
+        },
+        chooseSeat: (state, {payload}) => {
+            state.seatNumber = payload.seatNumber
         }
     },
     extraReducers: (build)=> {}
 })
 
-export const {chooseMovie} = transactions.actions
+export const {chooseMovie, chooseSeat} = transactions.actions
 export default transactions.reducer

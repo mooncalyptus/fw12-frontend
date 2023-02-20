@@ -1,82 +1,60 @@
 import React from "react";
 
-function GridSeat(){
-    return(
+const GridSeat = () => {
+    const [selectedSeat, setSelectedSeat] = React.useState([])
+
+    const selectSeat = (seat) => {
+        console.log(seat)
+        if (selectedSeat.includes(seat)) {
+            setSelectedSeat([...selectedSeat.filter((exist) => exist !== seat)])
+        } else {
+            setSelectedSeat([
+                ...selectedSeat, seat
+            ])
+        }
+    }
+    return (
         <>
-                                        <div className="grid grid-cols-8 gap-y-1.5 ml-9">
-                                    <button>A</button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="@apply w-[26px] h-[26px] bg-[#6E7191]"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button> B</button>
-                                    <button className="btn-seat"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button>C</button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#8EC3B0]"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#8EC3B0]"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#8EC3B0]"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button>D</button>
-                                    <button className="btn-seat"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button> E</button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button>F</button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button>G</button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="w-[26px] h-[26px] bg-[#6E7191]"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-                                    <button className="btn-seat"></button>
-
-                                    <button></button>
-                                    <button className="btn-another-seat">1</button>
-                                    <button className="btn-another-seat">2</button>
-                                    <button className="btn-another-seat">3</button>
-                                    <button className="btn-another-seat">4</button>
-                                    <button className="btn-another-seat">5</button>
-                                    <button className="btn-another-seat">6</button>
-                                    <button className="btn-another-seat">7</button>
-                                    
-                                </div>
+            <div className="flex h-screen justify-center items-center">
+                <div className="max-w-md w-full">
+                    <div></div>
+                    <div className="grid grid-cols-2 gap-11">
+                        <div className="grid grid-rows-8 gap-3">{["A", "B", "C", "D", "E", "F", "G", " "].map((alphabet, _i) => {
+                            return <div className="grid grid-cols-8 gap-4">
+                                {[0, 1, 2, 3, 4, 5, 6, 7].map((index, _i) => {
+                                    if (index > 0) {
+                                        if (alphabet !== " ") {
+                                            const seatNumber = alphabet + String(index)
+                                            return <button onClick={() => selectSeat(seatNumber)} className={`w-6 h-6 bg-[#D6D8E7] hover:bg-[#8EC3B0] rounded ${selectedSeat.includes(seatNumber) ? ' bg-[#8EC3B0]' : ' '}`} />
+                                        } else {
+                                            return <button className="w-6 h-6" >{index}</button>
+                                        }
+                                    } else {
+                                        return <button className="w-5 h-5" >{alphabet}</button>
+                                    }
+                                })}
+                            </div>
+                        })}</div>
+                        <div className="grid grid-rows-8 gap-4">{["A", "B", "C", "D", "E", "F", "G", " "].map((alphabet, _i) => {
+                            return <div className="grid grid-cols-8 gap-4">
+                                {[8, 9, 10, 11, 12, 13, 14].map((index, _i) => {
+                                    if (index > 0) {
+                                        if (alphabet !== " ") {
+                                            const seatNumber = alphabet + String(index)
+                                            return <button onClick={() => selectSeat(seatNumber)} className={`w-6 h-6 bg-[#D6D8E7] hover:bg-[#8EC3B0] rounded ${selectedSeat.includes(seatNumber) ? 'bg-[#8EC3B0]' : ' '}`} />
+                                        } else {
+                                            return <button className="w-6 h-6" >{index}</button>
+                                        }
+                                    } else {
+                                        return <button className="w-5 h-5" >{alphabet}</button>
+                                    }
+                                })}
+                            </div>
+                        })}</div>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
         </>
     )
 }
