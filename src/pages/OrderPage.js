@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import { chooseSeat as chooseSeatAction } from "../redux/reducers/transactions";
 import GridSeat from "./GridSeat";
 import SecondGridSeat from "./SecondGridSeat";
@@ -10,9 +10,11 @@ const OrderPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [selectedSeat, setSelectedSeat] = React.useState([])
+    const {movieTitle, bookingDate, bookingTime, price, cinemaName} = useSelector((state) => state.transactions)
+    // console.log(selectedSeat.length)
 
     const selectSeat = (seat) => {
-        console.log(seat)
+        // console.log(seat)
         if (selectedSeat.includes(seat)) {
             setSelectedSeat([...selectedSeat.filter((exist) => exist !== seat)])
         } else {
@@ -22,6 +24,8 @@ const OrderPage = () => {
         }
     }
 
+
+// console.log(selectedSeat)
     const checkout = () => {
         dispatch(chooseSeatAction({seatNumber: selectedSeat.join(", ")}))
         navigate('/paymentpage')
@@ -37,7 +41,7 @@ const OrderPage = () => {
                         <div className="flex flex-col">
 
                             <div className="flex bg-white ml-[70px] mt-6">
-                                <div className="grow pl-12 py-9">Spider-Man: Homecoming</div>
+                                <div className="grow pl-12 py-9">{movieTitle}</div>
                                 <div className="py-9">
                                     <button className="bg-[#E5E5E5] mr-9 p-1.5 rounded text-[#8EC3B0] font-bold">Change Movie</button>
                                 </div>
@@ -114,29 +118,33 @@ const OrderPage = () => {
                             <div className="flex justify-center">
                                 <img src={require('../assets/images/footer-2.png')} className="w-[123px] mt-[39px]" alt="desc" />
                             </div>
-                            <div className="text-center mt-[13px]">CineOne 21 Cinema</div>
+                            <div className="text-center mt-[13px]">{cinemaName}</div>
                             <div className="mx-6 mt-8">
                                 <div className="flex">
                                     <div className="grow">Movie selected</div>
-                                    <div>Spider-Man: Homecoming</div>
+                                    <div>{movieTitle}</div>
                                 </div>
                                 <div className="flex">
-                                    <div className="grow">Tuesday, 07 July 2020</div>
-                                    <div>02:00</div>
+                                    <div className="grow">{bookingDate}</div>
+                                    <div>{bookingTime}</div>
                                 </div>
                                 <div className="flex">
                                     <div className="grow">One ticket price</div>
-                                    <div>$10</div>
+                                    <div>{price}</div>
                                 </div>
                                 <div className="flex">
                                     <div className="grow">Seat choosed</div>
-                                    <div>C4, C5, C6</div>
+                                    {/* {selectedSeat.map((item) => (
+                                        return <div></div>
+                                    ))} */}
+                                    <div>{selectedSeat.join(",")}</div>
+                                    
                                 </div>
                             </div>
                             <hr className="my-8 bg-gray-200 border-2 dark:bg-gray-700"></hr>
                             <div className="flex px-6 pb-6">
                                 <div className="grow text-lg font-semibold">Total Payment</div>
-                                <div className="text-[#8EC3B0] font-bold text-2xl">$30</div>
+                                <div className="text-[#8EC3B0] font-bold text-2xl">{price * selectedSeat.length}</div>
                             </div>
                         </div>
                     </div>

@@ -47,15 +47,20 @@ const MovieDetails = () => {
         setSelectedCinema(cinema)
     }
 
-    const book = () => {
+    const book = (price, cinemaName) => {
         dispatch(chooseMovieActions({
             movieId: id,
             cinemaId: selectedCinema,
             bookingDate: date,
             bookingTime: selectedTime,
+            movieTitle: movie?.title,
+            price,
+            cinemaName
+            // price: cinema.price,
         }))
         navigate('/orderpage')
     }
+
     return (
         <>
             <NavbarLogin />
@@ -147,7 +152,7 @@ const MovieDetails = () => {
                                     <span className="text-base font-semibold">{cinema.price}</span>
                                 </div>
                                 <div className="px-3 py-6"><button className="btn w-full btn-outline btn-accent"
-                                    disabled={selectedCinema !== cinema.id} onClick={book}>Book Now</button>
+                                    disabled={selectedCinema !== cinema.id} onClick={() => book(cinema.price, cinema.name)}>Book Now</button>
                                 </div>
                             </div>
                         </div>)

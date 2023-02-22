@@ -8,7 +8,10 @@ const initialState = {
     paymentMethod: "",
     fullName: "",
     email: "",
-    phoneNumber: ""
+    phoneNumber: "",
+    movieTitle: "",
+    price: "",
+    cinemaName: "",
 }
 
 const transactions = createSlice({
@@ -20,6 +23,9 @@ const transactions = createSlice({
             state.cinemaId = payload.cinemaId
             state.bookingDate = payload.bookingDate
             state.bookingTime = payload.bookingTime
+            state.movieTitle = payload.movieTitle
+            state.price = payload.price
+            state.cinemaName = payload.cinemaName
             // return initialState
         },
         chooseSeat: (state, {payload}) => {
