@@ -105,8 +105,8 @@ const OrderPage = () => {
                                     </div>
                                 </div>
                                 <div className="flex ml-[70px] mt-10 gap-[220px] mb-[70px]">
-                                    <button className="border-2 border-[#8EC3B0] px-6 py-0.5">Change your movie</button>
-                                    <button onClick={checkout} className="bg-[#9ED5C5] text-white px-6 py-0.5">Checkout now</button>
+                                    <button className="btn btn-outline btn-accent">Change your movie</button>
+                                    <button onClick={checkout} className="btn btn-accent">Checkout now</button>
                                 </div>
                             </div>
                         </div>

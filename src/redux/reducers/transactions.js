@@ -5,7 +5,7 @@ const initialState = {
     bookingDate: "",
     bookingTime: "",
     seatNumber: "",
-    paymentMethod: "",
+    paymentMethodId: "",
     fullName: "",
     email: "",
     phoneNumber: "",

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector , useDispatch} from "react-redux";
 import { createTransaction as trxAction} from "../redux/actions/transactions";
 import http from "../helpers/http";
@@ -8,6 +8,7 @@ import Footer from "../components/Footer"
 
 const PaymentPage = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const token = useSelector((state) => state.auth.token)
     const data = useSelector((state) => state.transactions)
     const [form, setForm] = React.useState({
@@ -26,12 +27,12 @@ const PaymentPage = () => {
         const { data } = await http().get("/payment");
         setPaymentList(data.result)
     }
-    // React.useEffect(() => {
-    //     console.log(form)
-    // }, [form])
+    React.useEffect(() => {
+        console.log(form)
+    }, [form])
     const pay = () => {
         dispatch(trxAction({...data, ...form, token}))
-        console.log('data berhasil ditambahkan')
+        navigate("/orderhistory")
     }
     return (
         <div className="font-mulish">

@@ -171,7 +171,7 @@ const ProfilePage = () => {
                     <form onSubmit={UpdateProfile}>
                         <div className="bg-white flex gap-14 rounded-lg mr-[70px]">
                             <div className="pl-12 py-6">Account Settings</div>
-                            <div className="py-6">Order History</div>
+                           <Link to="/orderhistory"> <div className="py-6">Order History</div> </Link>
                         </div>
                         <div className="bg-white mt-12 mr-[70px] rounded-lg">
                             <div className="text-base ml-8 pt-10">Details Information</div>
