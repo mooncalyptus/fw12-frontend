@@ -27,7 +27,7 @@ const OrderPage = () => {
 
 // console.log(selectedSeat)
     const checkout = () => {
-        dispatch(chooseSeatAction({seatNumber: selectedSeat.join(", ")}))
+        dispatch(chooseSeatAction({seatNumber: selectedSeat.join(", "), total_price: price * selectedSeat.length}))
         navigate('/paymentpage')
     }
     return (

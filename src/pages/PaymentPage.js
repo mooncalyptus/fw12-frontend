@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
+import { createTransaction as trxAction} from "../redux/actions/transactions";
 import http from "../helpers/http";
 import NavbarLogin from "../components/NavbarLogin";
 import Footer from "../components/Footer"
 
 const PaymentPage = () => {
+    const dispatch = useDispatch()
+    const token = useSelector((state) => state.auth.token)
+    const data = useSelector((state) => state.transactions)
     const [form, setForm] = React.useState({
         fullName: "",
         email: "",
@@ -22,9 +26,13 @@ const PaymentPage = () => {
         const { data } = await http().get("/payment");
         setPaymentList(data.result)
     }
-    React.useEffect(() => {
-        console.log(form)
-    }, [form])
+    // React.useEffect(() => {
+    //     console.log(form)
+    // }, [form])
+    const pay = () => {
+        dispatch(trxAction({...data, ...form, token}))
+        console.log('data berhasil ditambahkan')
+    }
     return (
         <div className="font-mulish">
             <NavbarLogin />
@@ -73,8 +81,8 @@ const PaymentPage = () => {
                                 </div>
                             </div>
                             <div className="flex mt-6 gap-[220px] mb-6">
-                                <button className="border-2 border-[#8EC3B0] px-6 py-0.5">Previous step</button>
-                                <button className="bg-[#9ED5C5] text-white px-6 py-0.5">Pay your order</button>
+                                <button className="btn btn-outline btn-accent">Previous step</button>
+                                <button onClick={pay} className="btn btn-accent">Pay your order</button>
                             </div>
                         </div>
                     </div>

@@ -144,7 +144,7 @@ const MovieDetails = () => {
                                 <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
                                 <div className="grid grid-cols-4 pl-4 gap-3">
                                     {cinema.time.map(time => <div>
-                                        <button className={`btn-ghost${cinema.id === selectedCinema && time === selectedTime && " text-emerald-400 font-bold"}`} onClick={() => chooseTime(time, cinema.id)}>{time}</button>
+                                        <button className={`btn-ghost${cinema.cinemaId === selectedCinema && time === selectedTime && " text-emerald-400 font-bold"}`} onClick={() => chooseTime(time, cinema.cinemaId)}>{time}</button>
                                     </div>)}
                                 </div>
                                 <div className="flex px-8">
@@ -152,7 +152,7 @@ const MovieDetails = () => {
                                     <span className="text-base font-semibold">{cinema.price}</span>
                                 </div>
                                 <div className="px-3 py-6"><button className="btn w-full btn-outline btn-accent"
-                                    disabled={selectedCinema !== cinema.id} onClick={() => book(cinema.price, cinema.name)}>Book Now</button>
+                                    disabled={selectedCinema !== cinema.cinemaId} onClick={() => book(cinema.price, cinema.name)}>Book Now</button>
                                 </div>
                             </div>
                         </div>)

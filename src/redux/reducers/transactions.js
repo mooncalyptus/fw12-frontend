@@ -12,6 +12,7 @@ const initialState = {
     movieTitle: "",
     price: "",
     cinemaName: "",
+    total_price: "",
 }
 
 const transactions = createSlice({
@@ -30,6 +31,7 @@ const transactions = createSlice({
         },
         chooseSeat: (state, {payload}) => {
             state.seatNumber = payload.seatNumber
+            state.total_price = payload.total_price
         }
     },
     extraReducers: (build)=> {}
