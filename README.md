@@ -41,8 +41,5 @@ The website should now be running at http://localhost:3000.
 # Contributing
 Contributions are welcome! If you find any issues with the website or would like to suggest new features, please open an issue or create a pull request.
 
-# License
-This project is licensed under the MIT License. See the LICENSE file for more information.
-
 # Acknowledgements
 This project was created as part of my portfolio.
