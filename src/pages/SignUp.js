@@ -59,7 +59,7 @@ const SignUp = () => {
     return (
         <div className="flex">
             <div className="hidden md:block flex-[55%]">
-                <img src={require('../assets/images/bg.png')} alt="desc" />
+                <img src={require('../assets/images/default-film.png')} alt="desc" />
             </div>
             <div className="flex-[45%] py-10 md:py-0">
                 <div className="flex flex-col pt-20 pl-20 gap-3">
@@ -113,8 +113,12 @@ const SignUp = () => {
                         )}
                     </Formik>
                 </div>
-                <div className="flex flex-col gap-3 mt-4">
-                    <Link to="/signin"><div className="flex justify-center items-center">Already have account? <p className="underline">Sign In here</p></div></Link>
+                <div className="flex flex-col gap-3 my-4">
+                    <Link to="/signin">
+                        <div className="flex justify-center items-center gap-3">
+                            <span>Already have account? </span>
+                        <p className="hover:text-[#62B6B7]">Sign In here</p>
+                        </div></Link>
                 </div>
             </div>
         </div>

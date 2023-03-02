@@ -53,8 +53,8 @@ const SignIn = () => {
         <>
             <section>
                 <div className="flex">
-                    <div className="hidden md:block flex-[55%] h-screen">
-                        <img src={require('../assets/images/bg.png')} alt="desc" />
+                    <div className="hidden md:block flex-[55%]">
+                        <img src={require('../assets/images/default-film.png')} alt="desc" className="w-[600px] h-[600px]" />
                     </div>
                     <div className="flex-[45%] py-10 md:py-0">
                         <div className="flex flex-col pt-20 pl-20 gap-3">
@@ -91,8 +91,8 @@ const SignIn = () => {
                         </div>
 
                         <div className="flex flex-col gap-3 mt-4">
-                            <Link to="/signup"><div className="flex justify-center items-center">Don`t have account? <p className="underline">Sign Up here</p></div></Link>
-                            <Link to="/forgotpassword"><div className="flex justify-center items-center">Forgot your password? <p className="underline">Forgot Password</p></div></Link>
+                            <Link to="/signup"><div className="flex justify-center items-center gap-3">Don`t have account? <p className="hover:text-[#62B6B7]">Sign Up here</p></div></Link>
+                            <Link to="/forgotpassword"><div className="flex justify-center items-center gap-3">Forgot your password? <p className="hover:text-[#62B6B7]">Forgot Password</p></div></Link>
                         </div>
                     </div>
                 </div>
@@ -102,4 +102,3 @@ const SignIn = () => {
 }
 
 export default SignIn
-// export default withAuth(SignIn)
